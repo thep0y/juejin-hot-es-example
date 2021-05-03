@@ -87,3 +87,8 @@ go run main.go index --pages 10
 ```shell
 go run main.go search 前端
 ```
+
+查询到的结果中会将查询词高亮显示：
+
+![截屏2021-05-03 20.22.39](https://z3.ax1x.com/2021/05/03/gmDDAA.png)
+
