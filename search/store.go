@@ -3,7 +3,7 @@
  * @Email: thepoy@163.com
  * @File Name: store.go
  * @Created: 2021-04-24 16:14:08
- * @Modified: 2021-05-03 19:43:32
+ * @Modified: 2021-05-03 20:30:25
  */
 
 package search
@@ -20,11 +20,13 @@ import (
 	"github.com/elastic/go-elasticsearch/v8/esapi"
 )
 
+// SearchResults es 查询响应
 type SearchResults struct {
 	Total int    `json:"total"`
 	Hits  []*Hit `json:"hits"`
 }
 
+// Hit 查询响应中的单条结果
 type Hit struct {
 	Document
 	Sort       []interface{} `json:"sort"`
