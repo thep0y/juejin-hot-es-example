@@ -3,7 +3,7 @@
  * @Email: thepoy@163.com
  * @File Name: index.go
  * @Created: 2021-04-24 16:14:08
- * @Modified: 2021-05-03 19:40:37
+ * @Modified: 2021-05-03 20:10:58
  */
 
 package commands
@@ -272,19 +272,17 @@ func (c *Crawler) existsDocument(id string) (bool, error) {
 func (c *Crawler) setupIndex() error {
 	mapping := `{
 		"mappings": {
-			"_doc": {
-				"properties": {
-					"id":         { "type": "keyword" },
-					"title":      { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
-					"brief_content":        { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
-					"category": { "type": "keyword", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
-					"author_info": {
-						"properties": {
-							"user_name": { "type": "string" },
-							"company": { "type": "string", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
-							"job_title": { "type": "string" },
-							"description": { "type": "text" }
-						}
+			"properties": {
+				"id":         { "type": "keyword" },
+				"title":      { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
+				"brief_content":        { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
+				"category": { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
+				"author_info": {
+					"properties": {
+						"user_name": { "type": "text" },
+						"company": { "type": "text", "analyzer": "ik_max_word", "search_analyzer": "ik_smart" },
+						"job_title": { "type": "text" },
+						"description": { "type": "text" }
 					}
 				}
 			}
