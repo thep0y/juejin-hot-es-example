@@ -3,7 +3,7 @@
  * @Email: thepoy@163.com
  * @File Name: store.go
  * @Created: 2021-04-24 16:14:08
- * @Modified: 2021-05-03 20:30:25
+ * @Modified: 2021-05-04 10:15:01
  */
 
 package search
@@ -115,6 +115,23 @@ func (s *Store) Create(item *Document) error {
 // Exists 当 id 对应的文档在 Store 中存在时，返回 true
 func (s *Store) Exists(id string) (bool, error) {
 	res, err := s.es.Exists(s.indexName, id)
+	if err != nil {
+		return false, err
+	}
+
+	switch res.StatusCode {
+	case 200:
+		return true, nil
+	case 404:
+		return false, nil
+	default:
+		return false, fmt.Errorf("[%s]", res.Status())
+	}
+}
+
+// Delete 删除指定 id 的文档
+func (s *Store) Delete(id string) (bool, error) {
+	res, err := s.es.Delete(s.indexName, id)
 	if err != nil {
 		return false, err
 	}

@@ -12,6 +12,7 @@ Usage:
   juejin [command]
 
 Available Commands:
+  delete      Delete item with id
   help        Help about any command
   index       Index juejin hot-recommended articles into Elasticsearch
   search      Search juejin hot recommended articles
@@ -23,7 +24,7 @@ Flags:
 Use "juejin [command] --help" for more information about a command.
 ```
 
-可选参数为`index`和`search`。
+可选命令为`index`、`search`和`delete`。
 
 其中`index`也有可选命令：
 
@@ -92,3 +93,16 @@ go run main.go search 前端
 
 ![截屏2021-05-03 20.22.39](https://z3.ax1x.com/2021/05/03/gmDDAA.png)
 
+### 4 删除
+
+```shell
+go run main.go delete [id]
+```
+
+如：
+
+![截屏2021-05-04 10.21.27](https://z3.ax1x.com/2021/05/04/gnk44f.png)
+
+对已删除的 id 再执行删除操作：
+
+![截屏2021-05-04 10.22.04](https://z3.ax1x.com/2021/05/04/gnk7vQ.png)

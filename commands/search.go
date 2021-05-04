@@ -3,7 +3,7 @@
  * @Email: thepoy@163.com
  * @File Name: search.go
  * @Created:  2021-05-03 08:26:49
- * @Modified: 2021-05-03 19:26:35
+ * @Modified: 2021-05-04 09:55:52
  */
 
 package commands
@@ -109,7 +109,8 @@ func (s *Search) displayResult(w io.Writer, hit *search.Hit) {
 		company = hit.Author.Company
 	}
 
-	fmt.Fprintf(w, "\x1b[2m• title: \x1b[0m \x1b[1m%s\x1b[0m\n", s.highlightString(title))
+	fmt.Fprintf(w, "\x1b[2m• id: \x1b[0m \x1b[1m%s\x1b[0m\n", hit.ID)
+	fmt.Fprintf(w, "  \x1b[2mtitle: \x1b[0m \x1b[1m%s\x1b[0m\n", s.highlightString(title))
 	fmt.Fprintf(w, "  \x1b[2mbrief_content:\x1b[0m \x1b[1m%s\n", s.highlightString(brief))
 	fmt.Fprintf(w, "  \x1b[2mcategory:\x1b[0m \x1b[1m%s \n", s.highlightString(category))
 	fmt.Fprintf(w, "  \x1b[2mcompany:\x1b[0m \x1b[1m%s\n", s.highlightString(company))

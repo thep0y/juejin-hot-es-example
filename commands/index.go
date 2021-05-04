@@ -3,7 +3,7 @@
  * @Email: thepoy@163.com
  * @File Name: index.go
  * @Created: 2021-04-24 16:14:08
- * @Modified: 2021-05-03 20:10:58
+ * @Modified: 2021-05-04 10:23:35
  */
 
 package commands
@@ -197,7 +197,7 @@ func (c *Crawler) ProcessPage(offset int) []search.Document {
 	return docs
 }
 
-// post 请亚前设置 Content-Type 为 application/json，然后返回响应
+// post 请求前设置 Content-Type 为 application/json，然后返回响应
 func (c *Crawler) post(body string) (*http.Response, error) {
 	client := http.DefaultClient
 
